@@ -1,6 +1,9 @@
 <script setup lang="ts">
     import { computed, reactive, ref, watch } from 'vue';
 
+
+    const myComp = ref(true);
+
     type Item = {
         name: string
         qty: number
@@ -26,6 +29,10 @@
         items.value.reduce((sum, item) => sum + item.qty, 0)
     );
 
+    const changeComp = () => {
+        console.log(myComp.value)
+        myComp.value = !myComp.value;
+    }
 
 </script>
 
@@ -47,6 +54,12 @@
         </ul>
 
         <p>Общее количество товаров: {{ totalPrice }}</p>
+
+
+        <div>
+            <button @click="changeComp">PRESS</button>
+            <p>{{ myComp ? 'Есть' : 'Нет' }}</p>
+        </div>
     </div>
 </template>
 
